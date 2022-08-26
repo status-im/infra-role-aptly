@@ -1,0 +1,23 @@
+---
+- name: Install dependencies
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+
+- name: Add repo APT GPG key
+  get_url:
+    dest: '/etc/apt/trusted.gpg.d/aptly.asc'
+    url: '{{ aptly_repo_gpg_key_url }}'
+    checksum: 'sha256:{{ aptly_repo_gpg_key_sha256 }}'
+
+- name: Add APT repo
+  apt_repository:
+    repo: '{{ aptly_repo_entry }}'
+    filename: '{{ aptly_repo_file }}'
+    state: present
+    mode: 0644
+
+- name: Install package
+  apt:
+    name: 'aptly'
