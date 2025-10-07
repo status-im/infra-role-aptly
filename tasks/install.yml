@@ -10,13 +10,14 @@
     dest: '/etc/apt/trusted.gpg.d/aptly.asc'
     url: '{{ aptly_repo_gpg_key_url }}'
     checksum: 'sha256:{{ aptly_repo_gpg_key_sha256 }}'
+    mode: '0o644'
 
 - name: Add APT repo
   apt_repository:
     repo: '{{ aptly_repo_entry }}'
     filename: '{{ aptly_repo_file }}'
     state: present
-    mode: 0644
+    mode: '0o644'
 
 - name: Install package
   apt:
