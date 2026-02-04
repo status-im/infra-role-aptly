@@ -1,6 +1,25 @@
 ---
+aptly_server_service_name: 'aptly-server'
+aptly_server_repo_domain: 'apt.example.org'
+aptly_server_api_port: 8080
+aptly_server_repo_port: 9090
+
+# APT Repo
 aptly_repo_url: 'http://repo.aptly.info/'
 aptly_repo_entry: 'deb {{ aptly_repo_url }} {{ ansible_distribution_release }} main'
 aptly_repo_file: '/etc/apt/sources.list.d/aptly'
 aptly_repo_gpg_key_url: 'https://www.aptly.info/pubkey.txt'
 aptly_repo_gpg_key_sha256: '217af3a4ece1283ce0c7d73de0709566a589c174d9808ac2a4578ee53037a6d6'
+
+# GitHub
+#aptly_server_github_token: ~
+# GPG
+#aptly_server_gpg_key_id: ~
+#aptly_server_gpg_private_key: ~
+#aptly_server_gpg_public_key: ~
+#aptly_server_gpg_password: ~
+# Repositories
+aptly_server_repositories: []
+#  - name: 'example'
+#    distro: 'all'
+#    component: 'main'
